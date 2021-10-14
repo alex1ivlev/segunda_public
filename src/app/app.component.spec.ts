@@ -23,13 +23,13 @@ describe('AppComponent', () => {
   it(`should have as title 'marketplace'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('marketplace');
+    expect(app.title).toEqual('segunda_market');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('marketplace app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('segunda_market app is running!');
   });
 });
