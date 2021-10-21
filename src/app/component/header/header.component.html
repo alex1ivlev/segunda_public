@@ -3,7 +3,14 @@
     <div class="navbar-brand align-item-center d-flex">
       <i style="font-size: 20px; color: white">
         <h3> Segunda </h3>
-      </i>
+      </i> &nbsp; &nbsp;
+
+      <button class="btn btn-info border border-light"routerLink="login">
+        <div style="font-size: 20px" *ngIf="!user; else elseBlock">Login</div>
+      </button>
+      <ng-template #elseBlock>
+        <div (click)="logout()">Logout</div>
+      </ng-template>
     </div>
     <button class="btn btn-info border border-light" routerLink="cart">
       <i style="font-size: 20px">My Cart </i>
