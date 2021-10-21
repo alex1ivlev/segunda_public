@@ -1,20 +1,27 @@
 <header>
   <div class="navbar bg-info shadow-sm">
-    <div class="navbar-brand align-item-center d-flex">
+    <div class="navbar-brand align-item-center d-flex" routerLink="products">
       <i style="font-size: 20px; color: white">
-        <h3> Segunda </h3>
-      </i> &nbsp; &nbsp;
+        <strong> Segunda </strong>
+      </i>
+    </div>
 
-      <button class="btn btn-info border border-light"routerLink="login">
-        <div style="font-size: 20px" *ngIf="!user; else elseBlock">Login</div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="searchValue" (keyup)="search($event)" placeholder="search product"
+             class="form-control" style="width: 600px; height: 30px">
+    </div>
+
+    <div>
+      <button class="btn btn-outline-light" routerLink="login" *ngIf="!user; else elseBlock">
+        Login
       </button>
       <ng-template #elseBlock>
-        <div (click)="logout()">Logout</div>
+        <button class="btn btn-outline-light" (click)="logout()">Logout</button>
       </ng-template>
+      <button class="ml-2 btn btn-outline-light" routerLink="cart">
+        <span>My Cart </span>
+        <span class="badge bg-primary"> {{totalItem}}</span>
+      </button>
     </div>
-    <button class="btn btn-info border border-light" routerLink="cart">
-      <i style="font-size: 20px">My Cart </i>
-      <div style="font-size: 10px" class="badge bg-primary"> {{totalItem}}</div>
-    </button>
   </div>
 </header>

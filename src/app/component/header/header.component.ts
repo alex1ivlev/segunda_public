@@ -11,6 +11,7 @@ import {AuthService} from "../../service/auth.service";
 export class HeaderComponent implements OnInit {
 
   public totalItem : number = 0;
+  public searchValue !: string ;
   user: User | null = null;
   constructor(private cartService: CartService, private authService: AuthService) {
     this.authService.getUser().subscribe((user: User | null) => this.user = user);
@@ -26,4 +27,9 @@ export class HeaderComponent implements OnInit {
       } )
   }
 
+  search(event: any) {
+    this.searchValue = (event.target as HTMLInputElement).value;
+    console.log(this.searchValue);
+    this.cartService.search.next(this.searchValue)
+  }
 }
