@@ -4,28 +4,22 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './component/header/header.component';
-import {CartComponent} from './component/cart/cart.component';
-import {ProductComponent} from './component/product/product.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
-import {LoginComponent} from './component/auth/login/login.component';
-import {RegisterComponent} from './component/auth/register/register.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FilterPipe} from './filter.pipe';
+import {ProductModule} from "./component/product/product.module";
+import {AuthModule} from "./component/auth/auth.module";
+import {CartModule} from "./component/cart/cart.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CartComponent,
-    ProductComponent,
-    LoginComponent,
-    RegisterComponent,
-    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -48,7 +42,10 @@ import {FilterPipe} from './filter.pipe';
     MatFormFieldModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ProductModule,
+    AuthModule,
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
