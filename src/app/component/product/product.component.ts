@@ -11,16 +11,18 @@ import {Item} from "../../item.interface";
 export class ProductComponent implements OnInit {
 
   public productList: Item[] = []
+  loading: boolean = false;
   searchValue: string = " ";
 
   constructor(private api: ApiService, private cartService: CartService) {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.api.getProduct()
       .subscribe(res => {
         this.productList = res;
-
+        this.loading = false;
         this.productList.forEach((a: Item) => {
           Object.assign(a, {quantity: 1});
         })
@@ -29,6 +31,7 @@ export class ProductComponent implements OnInit {
           this.searchValue = val;
         })
       })
+
   }
 
   addToCart(item: any) {
