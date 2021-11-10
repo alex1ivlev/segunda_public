@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../../service/api.service";
-import {CartService} from "../../service/cart.service";
+import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../item.interface";
+import {Store, select} from "@ngrx/store";
+import {GetItems, LoadItems} from "../store/productActions/productActions";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Component({
   selector: 'app-product',
@@ -9,29 +10,16 @@ import {Item} from "../../item.interface";
   styleUrls: ['./product.component.sass']
 })
 export class ProductComponent implements OnInit {
+  products: Item[] = [];
 
-  public productList: Item[] = []
+  constructor(private store: Store<any>) {
+    store.pipe(select('product')).subscribe((state) => (this.products = state.items));
+  }
+
   searchValue: string = " ";
 
-  constructor(private api: ApiService, private cartService: CartService) {
-  }
-
   ngOnInit(): void {
-    this.api.getProduct()
-      .subscribe(res => {
-        this.productList = res;
-
-        this.productList.forEach((a: Item) => {
-          Object.assign(a, {quantity: 1});
-        })
-
-        this.cartService.search.subscribe((val: string) => {
-          this.searchValue = val;
-        })
-      })
-  }
-
-  addToCart(item: any) {
-    this.cartService.addToCart(item)
+    this.store.dispatch(new GetItems());
   }
 }
+

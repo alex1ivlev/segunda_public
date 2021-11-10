@@ -11,13 +11,11 @@ export class CartService {
   public search = new BehaviorSubject<string>("")
 
   constructor() { }
+
   getProducts(){
     return this.productList.asObservable();
   }
-  setProduct(product : any){
-    this.cartItemList.push(...product);
-    this.productList.next(product);
-  }
+
   addToCart(product : Item){
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);

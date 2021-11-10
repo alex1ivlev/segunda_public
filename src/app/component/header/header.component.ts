@@ -11,6 +11,7 @@ import {AuthService} from "../../service/auth.service";
 export class HeaderComponent implements OnInit {
 
   public totalItem : number = 0;
+  public totalPrice : number = 0;
   public searchValue !: string ;
   user: User | null = null;
   constructor(private cartService: CartService, private authService: AuthService) {
@@ -24,7 +25,11 @@ export class HeaderComponent implements OnInit {
     this.cartService.getProducts()
       .subscribe( res =>{
         this.totalItem = res.length
+         res.map((item) => {
+          this.totalPrice= item.price + this.totalPrice
+        })
       } )
+
   }
 
   search(event: any) {
