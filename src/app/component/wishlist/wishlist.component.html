@@ -1,0 +1,8 @@
+<ng-container>
+  <div> Wishlist</div>
+    <input type="text" [(ngModel)]="newItem" value=" ">
+    <button (click)="addToList()"> Add New Item </button>
+
+    <app-wishlistlist [wishes]="wishes"></app-wishlistlist>
+</ng-container>
+
