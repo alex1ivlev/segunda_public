@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
   selector: 'app-wishlistlist',
   templateUrl: './wishlistlist.component.html',
   styleUrls: ['./wishlistlist.component.sass'],
-  //changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishlistlistComponent implements OnInit {
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-wishlist',
@@ -16,7 +16,18 @@ export class WishlistComponent implements OnInit{
   ngOnInit(): void { }
 
   addToList() {
-    this.wishes.push(this.newItem)
+    let newList = this.wishes.slice(0);
+    newList.push(this.newItem);
+    this.wishes = newList;
   }
 
+  editItem() {
+    //with onPush ON it doest let to directly mutate:
+    this.wishes[0] = " New Value from parent!!";
+
+    //use case that lets Edit button mutate the item with onPush
+    //let changedItem = this.wishes.slice(0);
+    //changedItem[0] = " New Value from parent!!";
+    //this.wishes = changedItem;
+  }
 }
