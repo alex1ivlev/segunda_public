@@ -11,7 +11,7 @@
           alt="">
         <h4> Your cart is empty! </h4>
         <h6>Add item to it now </h6>
-        <button routerLink="/products" class="btn btn-primary"> Shop Now</button>
+        <button class= "btn" routerLink="/products"> Shop Now</button>
       </div>
     </div>
   </div>
@@ -44,14 +44,15 @@
         </td>
       </tr>
       <tr>
+        <td colspan="4"></td>
         <td>
           <button class = "btn btn-primary" (click)="emptyCart()"> Empty all</button>
         </td>
         <td>
-          <button routerLink="/products" class="btn btn-accent"> Shop More</button>
+          <button routerLink="/products" class="btn"> Shop More</button>
         </td>
         <td>
-          <button class="btn"> Check Out</button>
+          <button class="btn btn-info"> Check Out</button>
         </td>
       </tr>
       </tbody>
