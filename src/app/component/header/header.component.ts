@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   public searchValue !: string ;
   user: User | null = null;
   constructor(private cartService: CartService, private authService: AuthService) {
+
     this.authService.getUser().subscribe((user: User | null) => this.user = user);
   }
 

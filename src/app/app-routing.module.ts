@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {RegisterComponent} from "./component/auth/register/register.component";
+import {WishlistComponent} from "./component/wishlist/wishlist.component";
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'register', component: RegisterComponent
-  }
+  },
+  {path:'wishlist', component: WishlistComponent}
 ];
 
 @NgModule({

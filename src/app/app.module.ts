@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './component/header/header.component';
@@ -11,14 +10,17 @@ import {FilterPipe} from './filter.pipe';
 import {ProductModule} from "./component/product/product.module";
 import {AuthModule} from "./component/auth/auth.module";
 import {CartModule} from "./component/cart/cart.module";
-import { AboutComponent } from './component/header/about/about.component';
-
+import { WishlistComponent } from './component/wishlist/wishlist.component';
+import { WishlistlistComponent } from './component/wishlist/wishlist-list/wishlistlist.component'
+import { WishlistitemComponent} from './component/wishlist/wishlist-item/wishlistitem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AboutComponent,
+    WishlistComponent,
+    WishlistlistComponent,
+    WishlistitemComponent,
   ],
   imports: [
     BrowserModule,
