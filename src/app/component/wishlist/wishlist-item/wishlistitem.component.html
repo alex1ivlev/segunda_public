@@ -1,5 +1,5 @@
 
-  <li class="list-group-item">{{index}}. {{item}}
-    <button (click)="removeItem(index)"> Delete</button>
+  <li class="list-group-item">{{index + 1}}. {{item}}
+    <button class="btn" (click)="removeItem(index)"> Delete</button>
     <!-----<button (click)="changeItem()"> Change Item from Child </button>----->
   </li>

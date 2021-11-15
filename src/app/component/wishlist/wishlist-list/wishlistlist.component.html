@@ -1,8 +1,7 @@
 
-<ng-container>
-  <div> Items List: </div>
 
+<div> Items List: </div>
   <ul class="list-group" *ngFor=" let item of wishes; let i = index">
     <app-wishlistitem [item]="item" [index]="i" (newItemEvent)="removeItem($event)"></app-wishlistitem>
   </ul>
-</ng-container>
+
