@@ -11,12 +11,14 @@ import {FilterPipe} from './filter.pipe';
 import {ProductModule} from "./component/product/product.module";
 import {AuthModule} from "./component/auth/auth.module";
 import {CartModule} from "./component/cart/cart.module";
+import { AboutComponent } from './component/header/about/about.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

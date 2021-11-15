@@ -13,7 +13,7 @@
           <p class="h-full"> {{item.description}}</p>
           <p><strong> Price: </strong> {{item.price | currency}}</p>
           <div class="justify-center card-actions">
-            <button (click)=addToCart(item) class="btn btn-outline btn-primary">Add to cart</button>
+            <button (click)=addToCart(item) class="btn btn-active" role="button" aria-pressed="true">Add to cart</button>
           </div>
         </div>
       </div>
