@@ -1,26 +1,30 @@
-<ng-container>
-  <form #form="ngForm" (ngSubmit)="submit(form)">
-    <div class="card" style="margin: 75px; padding: 75px;">
-      <h2 class="card-title"> Login </h2>
-      <mat-label> Email</mat-label>
-      <input ngModel name="email" #email="ngModel" required email class="row justify-content-md-center col col-lg-3"/> &nbsp; &nbsp;
+<div class="container mx-auto">
 
+  <form #form="ngForm" (ngSubmit)="submit(form)">
+
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Email</span>
+      </label>
+      <input ngModel name="email" #email="ngModel" required email type="text" placeholder="Please enter your email" class="input input-bordered">
       <span class="error" *ngIf="!email.valid && email.touched && email.hasError('required')" style="color: red">
         Email is required
-      </span>
+    </span>
+    </div>
 
-      <mat-label> Password</mat-label>
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Password</span>
+      </label>
       <input
-        matInput
         placeholder=""
         type="password"
-        ngModel
-        name="password"
+        ngModel name="password"
         #password="ngModel"
-        class="row justify-content-md-center col col-lg-3"
-      />
-
-      <button class="btn btn-info border border-light row justify-content-md-center col col-lg-3 mt-4"> Login</button>
+        class="input input-bordered"
+      >
     </div>
+
+      <input type="submit" value="Login" class="btn">
   </form>
-</ng-container>
+</div>

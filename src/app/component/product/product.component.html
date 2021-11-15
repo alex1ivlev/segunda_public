@@ -1,20 +1,22 @@
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="loading">
-      <div> LOADING......</div>
-    </ng-container>
-    <ng-container *ngIf="!loading">
-      <ng-container *ngFor="let item of productList | filter:searchValue">
-        <div class="card col-md-3" style="margin: 20px; padding: 20px">
-          <img src="{{item.image}}" alt="" style="width: 200px; height: 200px; margin-bottom: 15px">
-          <h5
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">{{item.title}}</h5>
-          <p
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;"> {{item.description}}</p>
-          <p><strong> Price: </strong> {{item.price | currency}}</p>
-          <button (click)=addToCart(item) class="btn btn-primary"> Add to cart</button>
-        </div>
-      </ng-container>
-    </ng-container>
+<div class="grid grid-cols-4 m-4 gap-4">
+
+  <div *ngIf="loading">
+    <button class="btn btn-lg btn-square loading"></button>
   </div>
+
+  <ng-container *ngIf="!loading">
+    <ng-container *ngFor="let item of productList | filter:searchValue">
+      <div class="card text-center shadow p-4 bg-base">
+        <img src="{{item.image}}" class="rounded-xl max-h-40 w-auto m-auto">
+        <div class="card-body">
+          <h2 class="card-title">{{item.title}}</h2>
+          <p class="h-full"> {{item.description}}</p>
+          <p><strong> Price: </strong> {{item.price | currency}}</p>
+          <div class="justify-center card-actions">
+            <button (click)=addToCart(item) class="btn btn-outline btn-primary">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>

@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   })
 
   constructor() {
-    // this.form.valueChanges.subscribe(console.log);
+    this.form.valueChanges.subscribe(console.log);
     this.form.get('email')?.valueChanges.subscribe(console.log);
 
   }
