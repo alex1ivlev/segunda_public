@@ -4,16 +4,21 @@ import {Store, select} from "@ngrx/store";
 import {GetItems} from "../store/Actions/Actions";
 
 @Component({
-  selector: 'app-product',
+  selector: 'app-productlist',
   templateUrl: './productlist.component.html',
   styleUrls: ['./productlist.component.sass']
 })
 export class Productlistcomponent implements OnInit {
 
-  items: Item[] = [];
+  items: Item[] = []
+  loading: boolean = true;
+  searchValue: string = " ";
 
   constructor(private store: Store<any>) {
-    store.pipe(select('shop')).subscribe((state) => (this.items = state.items));
+    store.pipe(select('shop')).subscribe((state) => {
+      this.items = state.items;
+      this.loading = false;
+    });
   }
 
     ngOnInit(): void {

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from "../../service/cart.service";
 import {User} from "../../user.interface";
 import {AuthService} from "../../service/auth.service";
+import {select, Store} from "@ngrx/store";
+import {Item} from "../../item.interface";
 
 @Component({
   selector: 'app-header',
@@ -10,31 +12,30 @@ import {AuthService} from "../../service/auth.service";
 })
 export class HeaderComponent implements OnInit {
 
-  public totalItem : number = 0;
-  public totalPrice : number = 0;
-  public searchValue !: string ;
+  public totalItem: number = 0;
+  public searchValue !: string;
+
   user: User | null = null;
-  constructor(private cartService: CartService, private authService: AuthService) {
+
+  constructor(private store: Store<any>, private authService: AuthService) {
+
     this.authService.getUser().subscribe((user: User | null) => this.user = user);
+
+    store.pipe(select('shop')).subscribe((state) => {
+      this.totalItem = state.cart.length;
+    })
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
+
   ngOnInit(): void {
-    this.cartService.getProducts()
-      .subscribe( res =>{
-        this.totalItem = res.length
-         res.map((item) => {
-          this.totalPrice= item.price + this.totalPrice
-        })
-      } )
 
   }
 
   search(event: any) {
     this.searchValue = (event.target as HTMLInputElement).value;
     console.log(this.searchValue);
-    this.cartService.search.next(this.searchValue)
   }
 }

@@ -1,0 +1,20 @@
+<div class="card text-center shadow p-4 bg-base">
+  <img src="{{item.image}}" class="rounded-xl max-h-40 w-auto m-auto">
+  <div class="card-body">
+    <h2 class="card-title">{{item.title}}</h2>
+    <p class="h-full"> {{item.description}}</p>
+    <p><strong> Price: </strong> {{item.price | currency}}</p>
+    <div class="justify-center card-actions">
+      <button (click)=addToCart(item) *ngIf="!inCart" class="btn btn-active" role="button" aria-pressed="true">Add to
+        cart
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

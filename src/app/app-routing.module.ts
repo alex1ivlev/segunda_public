@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {RegisterComponent} from "./component/auth/register/register.component";
+import {WishlistComponent} from "./component/wishlist/wishlist.component";
+import {AboutComponent} from "./component/header/about/about.component";
 
 
 const routes: Routes = [
@@ -15,6 +18,15 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./component/auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'register', component: RegisterComponent
+  },
+  {
+    path:'wishlist', component: WishlistComponent
+  },
+  {
+    path: 'about', component: AboutComponent
   }
 ];
 

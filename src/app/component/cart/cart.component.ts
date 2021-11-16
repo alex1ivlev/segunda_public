@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../service/cart.service";
-import {Store} from "@ngrx/store";
+import {select, Store} from "@ngrx/store";
 import {Item} from "../../item.interface";
 import {RemoveFromCart} from "../store/Actions/Actions";
 
@@ -13,7 +13,11 @@ export class CartComponent implements OnInit {
 
   public cart: Item[] =[];
 
-  constructor(private store: Store<{cart: []}>) {}
+  constructor(private store: Store<any>) {
+    store.pipe(select('shop')).subscribe((state) => {
+      this.cart = state.cart;
+  })}
+
     inCart: boolean = false;
 
 
