@@ -1,22 +1,22 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ProductComponent} from "./product.component";
-import {ProductRoutingModule} from './product-routing.module'
+import {Productlistcomponent} from "./productlistcomponent";
+import {ProductlistRoutingModule} from './productlist-routing.module'
 import {FilterPipe} from "../../filter.pipe";
 
 
 
 @NgModule({
   declarations: [
-    ProductComponent,
+    Productlistcomponent,
     FilterPipe
   ],
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductlistRoutingModule
   ],
   providers: [FilterPipe],
 
 })
-export class ProductModule { }
+export class ProductlistModule { }

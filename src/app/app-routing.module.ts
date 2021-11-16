@@ -3,10 +3,10 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 
 const routes: Routes = [
-  {path:'', redirectTo: 'products', pathMatch: 'full'},
+  {path:'', redirectTo: 'product-list', pathMatch: 'full'},
   {
-    path:'products',
-    loadChildren: () => import('./component/product/product.module').then(m => m.ProductModule)
+    path:'product-list',
+    loadChildren: () => import('./component/product-list/productlist.module').then(m => m.ProductlistModule)
   },
   {
     path:'cart',

@@ -1,11 +1,11 @@
-import { Actions, ActionTypes } from '../productActions/productActions';
+import { Actions, ActionTypes } from '../Actions/Actions';
 
 export const initialState = {
   items: [],
   cart: [],
 };
 
-export function ProductReducer(state = initialState, action: Actions) {
+export function Reducer(state = initialState, action: Actions) {
   switch (action.type) {
     case ActionTypes.LoadSuccess:
       return {
@@ -17,8 +17,13 @@ export function ProductReducer(state = initialState, action: Actions) {
         ...state,
         cart: [...state.cart, action.payload],
       };
-   //Add Remove from cart
 
+    //case ActionTypes.Remove:
+    //  return {
+    //    ...state,
+     //   cart: [...state.cart.filter((item) => item.id !== action.payload.id)
+    //    ],
+   //   };
     default:
       return state;
   }

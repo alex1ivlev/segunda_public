@@ -22,7 +22,7 @@ export class AuthService {
 
   login(user: User) {
     this.setUser(user);
-    this.router.navigateByUrl('/products');
+    this.router.navigateByUrl('/product-list');
   }
 
   logout() {

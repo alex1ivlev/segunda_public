@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../service/cart.service";
+import {Store} from "@ngrx/store";
+import {Item} from "../../item.interface";
+import {RemoveFromCart} from "../store/Actions/Actions";
 
 @Component({
   selector: 'app-cart',
@@ -8,17 +11,18 @@ import {CartService} from "../../service/cart.service";
 })
 export class CartComponent implements OnInit {
 
-  public products : any = [];
+  public cart: Item[] =[];
 
-  constructor(private cartService : CartService) { }
+  constructor(private store: Store<{cart: []}>) {}
+    inCart: boolean = false;
 
-  ngOnInit(): void {
+
+  removeFromCart(item: Item){
+    this.store.dispatch( new RemoveFromCart(item));
+    this.inCart = false;
   }
 
-  removeItem(item : any){
-  this.cartService.removeCartItem(item);
-  }
-  emptyCart(){
-    this.cartService.removeAll();
-  }
+
+    ngOnInit(): void {}
+
 }

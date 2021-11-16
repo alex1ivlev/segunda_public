@@ -1,12 +1,12 @@
 import { mergeMap, map, catchError } from 'rxjs/operators';
-import { ActionTypes } from '../productActions/productActions';
+import { ActionTypes } from '../Actions/Actions';
 import { ApiService } from '../../../service/api.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 
 @Injectable()
-export class ProductEffects {
+export class Effects {
   constructor(
     private actions$: Actions,
     private apiService: ApiService

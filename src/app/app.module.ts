@@ -10,20 +10,22 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ProductModule} from "./component/product/product.module";
+import {ProductlistModule} from "./component/product-list/productlist.module";
+import {ProductComponent} from "./component/product-list/product/product.component";
 import {AuthModule} from "./component/auth/auth.module";
 import {CartModule} from "./component/cart/cart.module";
 import {ActionReducerMap, Store, StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import { ProductReducer } from "./component/store/productReducers/productReducers";
-import { ProductEffects} from "./component/store/productEffects/productEffects"
+import { Reducer } from "./component/store/Reducer/Reducer";
+import { Effects} from "./component/store/Effects/Effects"
 import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -47,11 +49,11 @@ import {environment} from "../environments/environment";
     MatFormFieldModule,
     BrowserAnimationsModule,
     FormsModule,
-    ProductModule,
+    ProductlistModule,
     AuthModule,
     CartModule,
-    StoreModule.forRoot({ product: ProductReducer} as ActionReducerMap<any,any>),
-    EffectsModule.forRoot([ProductEffects]),
+    StoreModule.forRoot({ shop: Reducer} as ActionReducerMap<any,any>),
+    EffectsModule.forRoot([Effects]),
     StoreDevtoolsModule.instrument({
       maxAge:25,
       logOnly: environment.production
