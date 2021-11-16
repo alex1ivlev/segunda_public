@@ -1,40 +1,43 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from "../../service/api.service";
 import {CartService} from "../../service/cart.service";
 import {Item} from "../../item.interface";
+import {Observable, Subscription} from "rxjs";
+import {ProductQuery} from "./store/product.query";
+import {switchMap, filter} from "rxjs/operators";
+import {CartStore} from "../cart/store/cart.store";
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.sass']
 })
-export class ProductComponent implements OnInit {
-
-  public productList: Item[] = []
+export class ProductComponent implements OnInit, OnDestroy {
   loading: boolean = false;
+  listProductsSub?: Subscription;
   searchValue: string = " ";
+  products$: Observable<Item[]> = this.productQuery.selectAll();
 
-  constructor(private api: ApiService, private cartService: CartService) {
+  constructor(private api: ApiService, private cartStore: CartStore, private productQuery: ProductQuery) {
   }
 
-  ngOnInit(): void {
-    this.loading = true;
-    this.api.getProduct()
-      .subscribe(res => {
-        this.productList = res;
-        this.loading = false;
-        this.productList.forEach((a: Item) => {
-          Object.assign(a, {quantity: 1});
-        })
-
-        this.cartService.search.subscribe((val: string) => {
-          this.searchValue = val;
-        })
+  ngOnInit() {
+    this.listProductsSub = this.productQuery.selectProductsLoaded$.pipe(
+      filter(productsLoaded => !productsLoaded),
+      switchMap(()=> {
+          return this.api.getProduct();
       })
-
+    ).subscribe(result => {});
   }
 
   addToCart(item: any) {
-    this.cartService.addToCart(item)
+    this.cartStore.add(item);
+  }
+
+
+  ngOnDestroy() {
+    if (this.listProductsSub) {
+      this.listProductsSub.unsubscribe();
+    }
   }
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {ProductComponent} from "./product.component";
 import {ProductRoutingModule} from './product-routing.module'
 import {FilterPipe} from "../../filter.pipe";
+import {ApiService} from "../../service/api.service";
 
 
 
@@ -16,7 +17,9 @@ import {FilterPipe} from "../../filter.pipe";
     CommonModule,
     ProductRoutingModule
   ],
-  providers: [FilterPipe],
-
+  providers: [
+    FilterPipe,
+    ApiService
+    ]
 })
 export class ProductModule { }

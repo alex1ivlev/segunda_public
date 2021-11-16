@@ -13,6 +13,8 @@ import {CartModule} from "./component/cart/cart.module";
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { WishlistlistComponent } from './component/wishlist/wishlist-list/wishlistlist.component'
 import { WishlistitemComponent} from './component/wishlist/wishlist-item/wishlistitem.component';
+import {environment} from "../environments/environment";
+import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { WishlistitemComponent} from './component/wishlist/wishlist-item/wishlis
     FormsModule,
     ProductModule,
     AuthModule,
-    CartModule
+    CartModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

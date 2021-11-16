@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../service/cart.service";
 import {User} from "../../user.interface";
 import {AuthService} from "../../service/auth.service";
+import {CartQuery} from "../cart/store/cart.query";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-header',
@@ -10,22 +13,22 @@ import {AuthService} from "../../service/auth.service";
 })
 export class HeaderComponent implements OnInit {
 
-  public totalItem : number = 0;
+  public totalItem$ : Observable<number>
   public searchValue !: string ;
   user: User | null = null;
-  constructor(private cartService: CartService, private authService: AuthService) {
 
+  constructor(private cartService: CartService, private authService: AuthService, public cartQuery: CartQuery) {
     this.authService.getUser().subscribe((user: User | null) => this.user = user);
+    this.totalItem$ = this.cartQuery.selectAll().pipe(
+      map((items) => items.length)
+    );
   }
 
   logout(){
     this.authService.logout();
   }
   ngOnInit(): void {
-    this.cartService.getProducts()
-      .subscribe( res =>{
-        this.totalItem = res.length
-      } )
+    this.cartQuery.getCount()
   }
 
   search(event: any) {

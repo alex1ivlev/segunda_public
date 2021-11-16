@@ -23,6 +23,8 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@datorama/akita": "^6.2.4",
+    "@datorama/akita-ngdevtools": "^6.0.1",
     "@tailwindcss/forms": "^0.3.4",
     "@tailwindcss/typography": "^0.4.1",
     "daisyui": "^1.16.2",

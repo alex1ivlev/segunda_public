@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {CartService} from "../../service/cart.service";
+import {CartQuery} from "./store/cart.query"
+import {Item} from "../../item.interface";
+import {Observable} from "rxjs";
+import {CartStore} from "./store/cart.store";
 
 @Component({
   selector: 'app-cart',
@@ -8,21 +11,20 @@ import {CartService} from "../../service/cart.service";
 })
 export class CartComponent implements OnInit {
 
-  public products : any = [];
+   products$: Observable<Item[]> = this.cartQuery.selectAll();
 
-  constructor(private cartService : CartService) { }
+  constructor(private cartStore : CartStore, private cartQuery: CartQuery) {
+  }
 
   ngOnInit(): void {
-    this.cartService.getProducts()
-      .subscribe(res => {
-        this.products  = res;
-      })
+    this.products$ = this.cartQuery.selectAll();
   }
 
   removeItem(item : any){
-  this.cartService.removeCartItem(item);
+  this.cartStore.remove(item.id);
   }
+
   emptyCart(){
-    this.cartService.removeAll();
+    this.cartStore.set([]);
   }
 }
