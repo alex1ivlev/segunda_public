@@ -1,8 +1,6 @@
 <ng-container>
-  <div> Wishlist</div>
-    <input type="text" [(ngModel)]="newItem" value=" ">
-    <button class="btn" (click)="addToList()"> Add New Item </button>
-     <!----- <button (click)="editItem()"> Edit item from parent</button> -->
-    <app-wishlistlist [wishes]="wishes"></app-wishlistlist>
+  <h2 class="card-title">My Wishlist</h2>
+    <button class="btn" routerLink="/products"> Add New Item </button>
+    <app-wishlistlist [wishes$]="wishes"></app-wishlistlist>
 </ng-container>
 

@@ -1,4 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {Item} from "../../../item.interface";
+import {WishlistQuery } from "../store/wishlist.query"
+import {WishlistStore} from "../store/wishlist.store";
 
 @Component({
   selector: 'app-wishlistlist',
@@ -8,18 +12,19 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 })
 export class WishlistlistComponent implements OnInit {
 
-  @Input() public wishes: string[];
+  @Input() public wishes$: Observable<Item[]> = this.wishlistQuery.selectAll();
 
-  constructor() {
-    this.wishes = [];
+
+  constructor( private wishlistStore: WishlistStore, private wishlistQuery: WishlistQuery) {
   }
 
-  removeItem(index: number){
-    this.wishes.splice(index, 1)
-  }
+
   ngOnInit(): void {
-
+    this.wishes$ = this.wishlistQuery.selectAll();
   }
 
+  removeItem(item: any){
+    this.wishlistStore.remove(item.id);
+  }
 
 }

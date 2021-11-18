@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Item} from "../../../item.interface";
 
 @Component({
   selector: 'app-wishlistitem',
@@ -8,7 +9,10 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 })
 export class WishlistitemComponent implements OnInit {
 
-  @Input() public item: string = "";
+  @Input() public item: Item = {
+    title: ""
+  };
+
   @Input() public index: number = 0;
   @Output() newItemEvent = new EventEmitter<number>();
 
@@ -22,7 +26,4 @@ export class WishlistitemComponent implements OnInit {
     this.newItemEvent.emit(value);
   }
 
-  changeItem() {
-    this.item = "I'm value from a child component";
-  }
 }

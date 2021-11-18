@@ -6,6 +6,7 @@ import {Observable, Subscription} from "rxjs";
 import {ProductQuery} from "./store/product.query";
 import {switchMap, filter} from "rxjs/operators";
 import {CartStore} from "../cart/store/cart.store";
+import {WishlistStore} from "../wishlist/store/wishlist.store";
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   searchValue: string = " ";
   products$: Observable<Item[]> = this.productQuery.selectAll();
 
-  constructor(private api: ApiService, private cartStore: CartStore, private productQuery: ProductQuery) {
+  constructor(private api: ApiService, private cartStore: CartStore, private productQuery: ProductQuery, private wishlistStore: WishlistStore ) {
   }
 
   ngOnInit() {
@@ -34,7 +35,9 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.cartStore.add(item);
   }
 
-
+  addToWishlist(item: Item) {
+  this.wishlistStore.add(item)
+  }
   ngOnDestroy() {
     if (this.listProductsSub) {
       this.listProductsSub.unsubscribe();

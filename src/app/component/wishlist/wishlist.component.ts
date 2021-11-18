@@ -1,4 +1,7 @@
 import { Component, OnInit} from '@angular/core';
+import {WishlistQuery} from "./store/wishlist.query";
+import {Observable} from "rxjs";
+import {Item} from "../../item.interface";
 
 @Component({
   selector: 'app-wishlist',
@@ -7,27 +10,10 @@ import { Component, OnInit} from '@angular/core';
 })
 export class WishlistComponent implements OnInit{
 
-  public newItem: string = "";
-  public wishes: string[] = [];
+  public wishes: Observable<Item[]> = this.wishlistQuery.selectAll();
 
-
-  constructor() { }
+  constructor( private wishlistQuery: WishlistQuery) { }
 
   ngOnInit(): void { }
 
-  addToList() {
-    let newList = this.wishes.slice(0);
-    newList.push(this.newItem);
-    this.wishes = newList;
-  }
-
-  editItem() {
-    //with onPush ON it doest let to directly mutate:
-    this.wishes[0] = " New Value from parent!!";
-
-    //use case that lets Edit button mutate the item with onPush
-    //let changedItem = this.wishes.slice(0);
-    //changedItem[0] = " New Value from parent!!";
-    //this.wishes = changedItem;
-  }
 }

@@ -1,5 +1,12 @@
 
-  <li class="list-group-item">{{index + 1}}. {{item}}
+  <li class="list-group-item">
+    {{index + 1}}.
+      <div class="card-body">
+        <h2 class="card-title">{{item.title}}</h2>
+        <p class="h-full"> {{item.description}}</p>
+        <!----------  <div class="justify-center card-actions">
+          <button (click)=addToCart(item) class="btn btn-active" role="button" aria-pressed="true">Add to cart</button>
+        </div> -------->
+      </div>
     <button class="btn" (click)="removeItem(index)"> Delete</button>
-    <!-----<button (click)="changeItem()"> Change Item from Child </button>----->
   </li>

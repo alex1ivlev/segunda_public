@@ -1,7 +1,8 @@
 
 
-<div> Items List: </div>
-  <ul class="list-group" *ngFor=" let item of wishes; let i = index">
+<ng-container *ngFor=" wishes$| async as wishes; let i = index">
+  <ul class="list-group" *ngFor="let item of wishes">
     <app-wishlistitem [item]="item" [index]="i" (newItemEvent)="removeItem($event)"></app-wishlistitem>
   </ul>
+</ng-container>
 
