@@ -6,7 +6,6 @@ import {HeaderComponent} from './component/header/header.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FilterPipe} from './filter.pipe';
 import {ProductModule} from "./component/product/product.module";
 import {AuthModule} from "./component/auth/auth.module";
 import {CartModule} from "./component/cart/cart.module";
@@ -15,6 +14,7 @@ import { WishlistlistComponent } from './component/wishlist/wishlist-list/wishli
 import { WishlistitemComponent} from './component/wishlist/wishlist-item/wishlistitem.component';
 import {environment} from "../environments/environment";
 import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
+import {CartlistComponent} from "./component/cart/cartlist/cartlist.component";
 
 @NgModule({
   declarations: [
