@@ -1,5 +1,8 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Item} from "../../../item.interface";
+import {Observable} from "rxjs";
+import {WishlistQuery} from "../store/wishlist.query";
+import {WishlistState} from "../store/wishlist.store";
 
 @Component({
   selector: 'app-wishlistitem',
@@ -9,15 +12,13 @@ import {Item} from "../../../item.interface";
 })
 export class WishlistitemComponent implements OnInit {
 
-  @Input() public item: Item = {
-    title: ""
-  };
+  //@Input() public item: Observable<WishlistState> = this.wishlistQuery.selectEntity( (item1, index1) => );
 
   @Input() public index: number = 0;
   @Output() newItemEvent = new EventEmitter<number>();
 
 
-  constructor() { }
+  constructor(private wishlistQuery: WishlistQuery) { }
 
   ngOnInit(): void {
   }
@@ -26,4 +27,7 @@ export class WishlistitemComponent implements OnInit {
     this.newItemEvent.emit(value);
   }
 
+  addToCart(item: Item) {
+
+  }
 }

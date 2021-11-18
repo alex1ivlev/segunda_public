@@ -1,6 +1,7 @@
-<ng-container>
-  <h2 class="card-title">My Wishlist</h2>
+
     <button class="btn" routerLink="/products"> Add New Item </button>
-    <app-wishlistlist [wishes$]="wishes"></app-wishlistlist>
-</ng-container>
+    <app-wishlistlist [wishes$]="wishes$">
+      <ng-container *ngIf=" wishes$| async ;"></ng-container>
+    </app-wishlistlist>
+
 

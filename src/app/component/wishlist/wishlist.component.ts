@@ -10,10 +10,12 @@ import {Item} from "../../item.interface";
 })
 export class WishlistComponent implements OnInit{
 
-  public wishes: Observable<Item[]> = this.wishlistQuery.selectAll();
+  public wishes$: Observable<Item[]> = this.wishlistQuery.selectAll();
 
   constructor( private wishlistQuery: WishlistQuery) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log(this.wishes$)
+  }
 
 }

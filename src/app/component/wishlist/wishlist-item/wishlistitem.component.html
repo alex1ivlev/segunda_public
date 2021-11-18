@@ -1,12 +1,12 @@
-
-  <li class="list-group-item">
-    {{index + 1}}.
-      <div class="card-body">
-        <h2 class="card-title">{{item.title}}</h2>
-        <p class="h-full"> {{item.description}}</p>
-        <!----------  <div class="justify-center card-actions">
-          <button (click)=addToCart(item) class="btn btn-active" role="button" aria-pressed="true">Add to cart</button>
-        </div> -------->
+<!-----------
+  <div class="card lg:card-side bordered">
+    <img src="{{item.image}}" class="rounded-xl max-h-40 w-auto m-auto">
+    <div class="card-body">
+       {{index + 1}}. <h2 class="card-title">{{item.title}}</h2>
+      <p>{{item.description}}</p>
+      <div class="card-actions">
+        <button class="btn btn-primary" (click)="removeItem(index)">Delete</button>
+        <button class="btn btn-ghost" (click)="addToCart(item)">Move to Cart</button>
       </div>
-    <button class="btn" (click)="removeItem(index)"> Delete</button>
-  </li>
+    </div>
+  </div> ----->

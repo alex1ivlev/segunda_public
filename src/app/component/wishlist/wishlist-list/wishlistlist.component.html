@@ -1,8 +1,17 @@
 
-
-<ng-container *ngFor=" wishes$| async as wishes; let i = index">
-  <ul class="list-group" *ngFor="let item of wishes">
-    <app-wishlistitem [item]="item" [index]="i" (newItemEvent)="removeItem($event)"></app-wishlistitem>
-  </ul>
+<ng-container *ngFor="let item of wishes$ | async as wishes,  let i = index">
+  <div class="card lg:card-side bordered">
+    <img src="{{item.image}}" class="rounded-xl max-h-40 w-auto m-auto">
+    <div class="card-body">
+      <h2 class="card-title">{{item.title}}</h2>
+      <p>{{item.description}}</p>
+      <div class="card-actions">
+        <button class="btn btn-primary" (click)="removeItem(item)">Delete</button>
+        <!--
+        <button class="btn btn-ghost" (click)="addToCart(item)">Move to Cart</button> -->
+      </div>
+    </div>
+  </div>
 </ng-container>
+
 

@@ -5,10 +5,12 @@ import {Injectable} from "@angular/core";
 
 export interface WishlistState extends EntityState<Item, string> {
   wishList: [];
+  wishItem: Item;
 }
 export function createInitialState(): WishlistState {
   return {
-    wishList: []
+    wishList: [],
+    wishItem: {}
   }
 }
 
