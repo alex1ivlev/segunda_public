@@ -1,7 +1,4 @@
-
-    <button class="btn" routerLink="/products"> Add New Item </button>
-    <app-wishlistlist [wishes$]="wishes$">
-      <ng-container *ngIf=" wishes$| async ;"></ng-container>
-    </app-wishlistlist>
-
-
+<button class="btn" routerLink="/products"> Add New Item</button>
+<ng-container *ngIf=" wishes$| async as wishes">
+  <app-wishlistlist [wishes]="wishes" (deleteItem)="removeItem($event)"></app-wishlistlist>
+</ng-container>

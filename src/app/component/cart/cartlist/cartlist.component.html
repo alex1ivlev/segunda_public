@@ -1,6 +1,5 @@
 
 <!----if the cart is empty --->
-<ng-container *ngIf="products$ | async as products">
   <ng-container *ngIf="products.length == 0">
     <div class="container">
       <div class="card" style="margin: 25px; padding: 25px;">
@@ -56,4 +55,3 @@
       </table>
     </div>
   </ng-container>
-</ng-container>

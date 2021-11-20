@@ -13,7 +13,7 @@ import {CartQuery} from "./store/cart.query";
 
 export class CartComponent implements OnInit{
 
-  public products: Observable<Item[]> = this.cartQuery.selectAll();
+  public products$: Observable<Item[]> = this.cartQuery.selectAll();
 
 
   constructor(private cartQuery: CartQuery) { }

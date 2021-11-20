@@ -12,15 +12,13 @@ import {CartStore} from "../store/cart.store";
 })
 export class CartlistComponent implements OnInit {
 
-  @Input() products$: Observable<Item[]> = this.cartQuery.selectAll();
+  @Input() products: Item[] = [];
 
-  constructor(private cartStore : CartStore, private cartQuery: CartQuery) {
+  constructor(private cartStore : CartStore) {
 
   }
 
   ngOnInit(): void {
-    this.products$ = this.cartQuery.selectAll();
-    console.log('cart arrived');
   }
 
   removeItem(item : any){

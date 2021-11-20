@@ -1,6 +1,6 @@
 
-<ng-container>
+<ng-container *ngIf="products$ | async as products">
   <h2 class="card-title">My Cart</h2>
-  <app-cartlist [products$]="products"></app-cartlist>
+  <app-cartlist [products]="products"></app-cartlist>
 </ng-container>
 

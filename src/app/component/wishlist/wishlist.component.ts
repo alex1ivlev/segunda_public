@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import {WishlistQuery} from "./store/wishlist.query";
 import {Observable} from "rxjs";
 import {Item} from "../../item.interface";
+import {WishlistStore} from "./store/wishlist.store";
 
 @Component({
   selector: 'app-wishlist',
@@ -12,10 +13,14 @@ export class WishlistComponent implements OnInit{
 
   public wishes$: Observable<Item[]> = this.wishlistQuery.selectAll();
 
-  constructor( private wishlistQuery: WishlistQuery) { }
+
+  constructor( private wishlistQuery: WishlistQuery, private wishlistStore: WishlistStore) { }
 
   ngOnInit(): void {
-    console.log(this.wishes$)
   }
 
+  removeItem(item: Item) {
+    this.wishlistStore.remove(item.id);
+    console.log(item);
+  }
 }

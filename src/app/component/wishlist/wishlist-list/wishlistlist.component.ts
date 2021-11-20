@@ -1,8 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Item} from "../../../item.interface";
-import {WishlistQuery } from "../store/wishlist.query"
-import {WishlistState, WishlistStore} from "../store/wishlist.store";
+import {WishlistStore} from "../store/wishlist.store";
 
 @Component({
   selector: 'app-wishlistlist',
@@ -12,20 +10,18 @@ import {WishlistState, WishlistStore} from "../store/wishlist.store";
 })
 export class WishlistlistComponent implements OnInit {
 
-  @Input() public wishes$:  Observable<Item[]> = this.wishlistQuery.selectAll();
-  //@Input() public item$: Observable<WishlistState> = this.wishlistQuery.selectEntity();
+  @Input() public wishes: Item[] = [];
+  @Output() deleteItem = new EventEmitter<Item>();
 
 
-  constructor( private wishlistStore: WishlistStore, private wishlistQuery: WishlistQuery) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.wishes$ = this.wishlistQuery.selectAll();
-    console.log(" Wishes from inside the list: " + this.wishes$);
   }
 
-  removeItem(item: any){
-    this.wishlistStore.remove(item.id);
+  removeItem(item: Item) {
+    this.deleteItem.emit(item);
   }
 
 }
