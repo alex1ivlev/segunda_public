@@ -12,6 +12,7 @@ export class WishlistitemComponent implements OnInit {
 
   @Input() public item: Item = {};
   @Output() deleteItem = new EventEmitter<Item>();
+  @Output() moveToCart = new EventEmitter<Item>();
 
 
   constructor() { }
@@ -23,7 +24,8 @@ export class WishlistitemComponent implements OnInit {
     this.deleteItem.emit(this.item);
   }
 
-  addToCart(item: Item) {
-
+  addToCart(){
+  this.deleteItem.emit(this.item);
+  this.moveToCart.emit(this.item);
   }
 }
